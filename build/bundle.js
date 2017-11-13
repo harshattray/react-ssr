@@ -6967,26 +6967,38 @@ module.exports = memoizeStringOnly;
 "use strict";
 
 
+var _express = __webpack_require__(52);
+
+var _express2 = _interopRequireDefault(_express);
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = __webpack_require__(105);
+
+var _Home = __webpack_require__(114);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * @Author: Harsha Attray <harsha>
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-13T17:10:03+05:30
+ * @Last modified time: 2017-11-13T18:09:04+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
-var express = __webpack_require__(52);
-var React = __webpack_require__(20);
-var renderToString = __webpack_require__(105).renderToString;
-var Home = __webpack_require__(114).default;
 
-var app = express();
+var app = (0, _express2.default)();
 
 //Root route of the application
 
 app.get('/', function (req, res) {
-  var content = renderToString(React.createElement(Home, null));
+  var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
   res.send(content);
 });
 
@@ -21944,14 +21956,23 @@ var Home = function Home() {
   return _react2.default.createElement(
     'div',
     null,
-    'Stuff rendered from server'
+    _react2.default.createElement(
+      'div',
+      null,
+      'Stuff rendered from server',
+      _react2.default.createElement(
+        'button',
+        null,
+        'Press this!!'
+      )
+    )
   );
 }; /**
     * @Author: Harsha Attray <harsha>
     * @Date:   2017-11-13T16:32:35+05:30
     * @Filename: Home.js
     * @Last modified by:   harsha
-    * @Last modified time: 2017-11-13T17:31:53+05:30
+    * @Last modified time: 2017-11-13T18:11:08+05:30
     * @License: Apache License v2.0
     */
 exports.default = Home;
