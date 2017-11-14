@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,16 +71,22 @@ module.exports = require("react");
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(2);
+var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _renderer = __webpack_require__(5);
+var _renderer = __webpack_require__(4);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
@@ -91,7 +97,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T17:03:34+05:30
+ * @Last modified time: 2017-11-14T17:37:51+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -102,7 +108,6 @@ var app = (0, _express2.default)();
 app.use(_express2.default.static('public'));
 
 app.get('*', function (req, res) {
-
   res.send((0, _renderer2.default)(req));
 });
 
@@ -111,19 +116,101 @@ app.listen(7000, function () {
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 3 */
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = __webpack_require__(5);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _Routes = __webpack_require__(6);
+
+var _Routes2 = _interopRequireDefault(_Routes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @Author: Harsha Attray <harsha>
+ * @Date:   2017-11-14T15:50:40+05:30
+ * @Filename: renderer.js
+ * @Last modified by:   harsha
+ * @Last modified time: 2017-11-14T17:33:26+05:30
+ * @License: Apache License v2.0
+ */
+
+exports.default = function (req) {
+  var content = (0, _server.renderToString)(_react2.default.createElement(
+    _reactRouterDom.StaticRouter,
+    { location: req.path, context: {} },
+    _react2.default.createElement(_Routes2.default, null)
+  ));
+
+  return '<html><head></head><body><div id="root">' + content + '</div><script src="bundle.js"></script></body></html>';
+};
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 4 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _Home = __webpack_require__(7);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default })
+  );
+}; /**
+    * @Author: Harsha Attray <harsha>
+    * @Date:   2017-11-14T16:16:38+05:30
+    * @Filename: Routes.js
+    * @Last modified by:   harsha
+    * @Last modified time: 2017-11-14T17:38:23+05:30
+    * @License: Apache License v2.0
+    */
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -165,97 +252,6 @@ var Home = function Home() {
     * @License: Apache License v2.0
     */
 exports.default = Home;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _server = __webpack_require__(3);
-
-var _server2 = _interopRequireDefault(_server);
-
-var _reactRouterDom = __webpack_require__(6);
-
-var _Routes = __webpack_require__(7);
-
-var _Routes2 = _interopRequireDefault(_Routes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * @Author: Harsha Attray <harsha>
- * @Date:   2017-11-14T15:50:40+05:30
- * @Filename: renderer.js
- * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T16:59:04+05:30
- * @License: Apache License v2.0
- */
-
-exports.default = function (req) {
-  var content = (0, _server2.default)(_react2.default.createElement(
-    _reactRouterDom.StaticRouter,
-    { location: req.path, context: {} },
-    ' // fetching the url from  the request param of the express server',
-    _react2.default.createElement(_Routes2.default, null)
-  ));
-
-  return '<html><head></head><body><div id="root">' + content + '</div><script src="bundle.js"></script></body></html>';
-};
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(6);
-
-var _Home = __webpack_require__(4);
-
-var _Home2 = _interopRequireDefault(_Home);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function () {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default })
-  );
-}; /**
-    * @Author: Harsha Attray <harsha>
-    * @Date:   2017-11-14T16:16:38+05:30
-    * @Filename: Routes.js
-    * @Last modified by:   harsha
-    * @Last modified time: 2017-11-14T17:04:04+05:30
-    * @License: Apache License v2.0
-    */
 
 /***/ })
 /******/ ]);
