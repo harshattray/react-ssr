@@ -6988,7 +6988,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-13T18:09:04+05:30
+ * @Last modified time: 2017-11-14T11:49:10+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -6996,10 +6996,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 
 //Root route of the application
+app.use(_express2.default.static('public'));
 
 app.get('/', function (req, res) {
   var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
-  res.send(content);
+
+  var html = '\n     <html>\n       <head>\n         <body>\n           <div>\n             ' + content + '\n           </div>\n           <script src="bundle.js"></script>\n         </body>\n       </head>\n     </html>\n  ';
+  res.send(html);
 });
 
 app.listen(7000, function () {
@@ -21962,7 +21965,9 @@ var Home = function Home() {
       'Stuff rendered from server',
       _react2.default.createElement(
         'button',
-        null,
+        { onClick: function onClick() {
+            return console.log('Print this');
+          } },
         'Press this!!'
       )
     )
@@ -21972,7 +21977,7 @@ var Home = function Home() {
     * @Date:   2017-11-13T16:32:35+05:30
     * @Filename: Home.js
     * @Last modified by:   harsha
-    * @Last modified time: 2017-11-13T18:11:08+05:30
+    * @Last modified time: 2017-11-14T10:54:07+05:30
     * @License: Apache License v2.0
     */
 exports.default = Home;

@@ -3,7 +3,7 @@
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-13T18:09:04+05:30
+ * @Last modified time: 2017-11-14T11:49:10+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -16,10 +16,24 @@ import Home from './client/component/Home';
 const app = express();
 
 //Root route of the application
+app.use(express.static('public'));
 
-app.get('/',(req,res) => { 
+app.get('/',(req,res) => {
   const content = renderToString(<Home />);
-  res.send(content);
+
+  const html = `
+     <html>
+       <head>
+         <body>
+           <div>
+             ${content}
+           </div>
+           <script src="bundle.js"></script>
+         </body>
+       </head>
+     </html>
+  `;
+  res.send(html);
 });
 
 app.listen(7000,() =>{

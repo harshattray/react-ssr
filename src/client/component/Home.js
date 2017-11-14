@@ -3,7 +3,7 @@
  * @Date:   2017-11-13T16:32:35+05:30
  * @Filename: Home.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-13T18:11:08+05:30
+ * @Last modified time: 2017-11-14T10:54:07+05:30
  * @License: Apache License v2.0
  */
 import React from 'react';
@@ -14,7 +14,7 @@ const Home = () => {
     <div>
       <div>
         Stuff rendered from server
-        <button>
+        <button onClick={()=>console.log('Print this')}>
           Press this!!
         </button>
       </div>
