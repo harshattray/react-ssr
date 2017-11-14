@@ -6988,7 +6988,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T11:49:10+05:30
+ * @Last modified time: 2017-11-14T12:19:15+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -7001,7 +7001,7 @@ app.use(_express2.default.static('public'));
 app.get('/', function (req, res) {
   var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
 
-  var html = '\n     <html>\n       <head>\n         <body>\n           <div>\n             ' + content + '\n           </div>\n           <script src="bundle.js"></script>\n         </body>\n       </head>\n     </html>\n  ';
+  var html = '\n     <html>\n       <head></head>\n         <body>\n           <div id="root">\n             ' + content + '\n           </div>\n           <script src="bundle.js"></script>\n         </body>\n     </html>\n  ';
   res.send(html);
 });
 

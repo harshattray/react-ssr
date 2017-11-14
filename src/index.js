@@ -3,7 +3,7 @@
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T11:49:10+05:30
+ * @Last modified time: 2017-11-14T12:19:15+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -23,14 +23,13 @@ app.get('/',(req,res) => {
 
   const html = `
      <html>
-       <head>
+       <head></head>
          <body>
-           <div>
+           <div id="root">
              ${content}
            </div>
            <script src="bundle.js"></script>
          </body>
-       </head>
      </html>
   `;
   res.send(html);
