@@ -80,15 +80,9 @@ var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _react = __webpack_require__(0);
+var _renderer = __webpack_require__(5);
 
-var _react2 = _interopRequireDefault(_react);
-
-var _server = __webpack_require__(3);
-
-var _Home = __webpack_require__(4);
-
-var _Home2 = _interopRequireDefault(_Home);
+var _renderer2 = _interopRequireDefault(_renderer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -97,7 +91,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T12:32:08+05:30
+ * @Last modified time: 2017-11-14T15:54:08+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -108,10 +102,8 @@ var app = (0, _express2.default)();
 app.use(_express2.default.static('public'));
 
 app.get('/', function (req, res) {
-  var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
 
-  var html = '<html><head></head><body><div id="root">' + content + '</div><script src="bundle.js"></script></body></html>';
-  res.send(html);
+  res.send(_renderer2.default);
 });
 
 app.listen(7000, function () {
@@ -173,6 +165,44 @@ var Home = function Home() {
     * @License: Apache License v2.0
     */
 exports.default = Home;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = __webpack_require__(3);
+
+var _server2 = _interopRequireDefault(_server);
+
+var _Home = __webpack_require__(4);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  var content = (0, _server2.default)(_react2.default.createElement(_Home2.default, null));
+
+  return '<html><head></head><body><div id="root">' + content + '</div><script src="bundle.js"></script></body></html>';
+}; /**
+    * @Author: Harsha Attray <harsha>
+    * @Date:   2017-11-14T15:50:40+05:30
+    * @Filename: renderer.js
+    * @Last modified by:   harsha
+    * @Last modified time: 2017-11-14T15:53:11+05:30
+    * @License: Apache License v2.0
+    */
 
 /***/ })
 /******/ ]);
