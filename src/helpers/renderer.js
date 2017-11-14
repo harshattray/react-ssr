@@ -3,7 +3,7 @@
  * @Date:   2017-11-14T15:50:40+05:30
  * @Filename: renderer.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T16:53:45+05:30
+ * @Last modified time: 2017-11-14T16:59:04+05:30
  * @License: Apache License v2.0
  */
 
@@ -13,9 +13,9 @@ import { StaticRouter } from 'react-router-dom';
 
 import Routes from '../client/Routes';
 
-export default () =>{
+export default (req) =>{
   const content = renderToString(
-    <StaticRouter context={{}}>
+    <StaticRouter location={req.path} context={{}}> // fetching the url from  the request param of the express server
       <Routes />
     </StaticRouter>
   );

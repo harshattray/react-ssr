@@ -91,7 +91,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T15:54:08+05:30
+ * @Last modified time: 2017-11-14T16:57:45+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -103,7 +103,7 @@ app.use(_express2.default.static('public'));
 
 app.get('/', function (req, res) {
 
-  res.send(_renderer2.default);
+  res.send((0, _renderer2.default)(req));
 });
 
 app.listen(7000, function () {
@@ -198,14 +198,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-14T15:50:40+05:30
  * @Filename: renderer.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T16:53:45+05:30
+ * @Last modified time: 2017-11-14T16:59:04+05:30
  * @License: Apache License v2.0
  */
 
-exports.default = function () {
+exports.default = function (req) {
   var content = (0, _server2.default)(_react2.default.createElement(
     _reactRouterDom.StaticRouter,
-    { context: {} },
+    { location: req.path, context: {} },
+    ' // fetching the url from  the request param of the express server',
     _react2.default.createElement(_Routes2.default, null)
   ));
 
