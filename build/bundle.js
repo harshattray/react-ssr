@@ -185,6 +185,56 @@ var _server = __webpack_require__(3);
 
 var _server2 = _interopRequireDefault(_server);
 
+var _reactRouterDom = __webpack_require__(6);
+
+var _Routes = __webpack_require__(7);
+
+var _Routes2 = _interopRequireDefault(_Routes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @Author: Harsha Attray <harsha>
+ * @Date:   2017-11-14T15:50:40+05:30
+ * @Filename: renderer.js
+ * @Last modified by:   harsha
+ * @Last modified time: 2017-11-14T16:53:45+05:30
+ * @License: Apache License v2.0
+ */
+
+exports.default = function () {
+  var content = (0, _server2.default)(_react2.default.createElement(
+    _reactRouterDom.StaticRouter,
+    { context: {} },
+    _react2.default.createElement(_Routes2.default, null)
+  ));
+
+  return '<html><head></head><body><div id="root">' + content + '</div><script src="bundle.js"></script></body></html>';
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(6);
+
 var _Home = __webpack_require__(4);
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -192,15 +242,17 @@ var _Home2 = _interopRequireDefault(_Home);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
-  var content = (0, _server2.default)(_react2.default.createElement(_Home2.default, null));
-
-  return '<html><head></head><body><div id="root">' + content + '</div><script src="bundle.js"></script></body></html>';
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default })
+  );
 }; /**
     * @Author: Harsha Attray <harsha>
-    * @Date:   2017-11-14T15:50:40+05:30
-    * @Filename: renderer.js
+    * @Date:   2017-11-14T16:16:38+05:30
+    * @Filename: Routes.js
     * @Last modified by:   harsha
-    * @Last modified time: 2017-11-14T15:53:11+05:30
+    * @Last modified time: 2017-11-14T16:25:15+05:30
     * @License: Apache License v2.0
     */
 
