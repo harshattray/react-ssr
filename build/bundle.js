@@ -91,7 +91,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Date:   2017-11-13T16:29:15+05:30
  * @Filename: index.js
  * @Last modified by:   harsha
- * @Last modified time: 2017-11-14T16:57:45+05:30
+ * @Last modified time: 2017-11-14T17:03:34+05:30
  * @License: Apache License v2.0
  */
 //common JS module syntax
@@ -101,7 +101,7 @@ var app = (0, _express2.default)();
 //Root route of the application
 app.use(_express2.default.static('public'));
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
 
   res.send((0, _renderer2.default)(req));
 });
@@ -253,7 +253,7 @@ exports.default = function () {
     * @Date:   2017-11-14T16:16:38+05:30
     * @Filename: Routes.js
     * @Last modified by:   harsha
-    * @Last modified time: 2017-11-14T16:25:15+05:30
+    * @Last modified time: 2017-11-14T17:04:04+05:30
     * @License: Apache License v2.0
     */
 
